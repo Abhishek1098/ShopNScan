@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "579833266681",
+    "firebase_url": "https://shopnscan-32dd5.firebaseio.com",
+    "project_id": "shopnscan-32dd5",
+    "storage_bucket": "shopnscan-32dd5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579833266681:android:8cf00783a599870c",
+        "android_client_info": {
+          "package_name": "com.example.shopnscan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "579833266681-eu4na2tkkjf5alm69rtu4n4mv0c4r6bc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shopnscan",
+            "certificate_hash": "af189611b892ede2063d90e1a5e95c363fcf6f14"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-HLnOKRIL14BpXqOqbcUYLmm2OMFs51g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "579833266681-7f091hof5tpa71o5p8rp3gq7r7gdvimr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
