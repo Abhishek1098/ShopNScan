@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <ListView
-        android:id="@+id/MainActivity_ListView_Cart"
+        android:id="@+id/ui_main_cart"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,24 +31,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivity_ListView_Cart">
+        app:layout_constraintTop_toBottomOf="@+id/ui_main_cart">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/ui_idkyet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Button" />
 
         <Button
-            android:id="@+id/MainActivity_Button_Checkout"
+            android:id="@+id/ui_main_checkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Checkout" />
 
         <Button
-            android:id="@+id/MainActivity_Button_Scan"
+            android:id="@+id/ui_main_scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
