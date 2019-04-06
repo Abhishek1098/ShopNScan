@@ -4,18 +4,19 @@ import android.graphics.Bitmap;
 
 public class Item {
 
-    private int indicator, price;
+    private String indicator;
+    private double price;
     private String name;
     private Bitmap image;
 
-    public Item(int indicator, String name, int price, Bitmap image) {
+    public Item(String indicator, String name, double price, Bitmap image) {
         this.indicator = indicator;
         this.name = name;
         this.price = price;
         this.image = image;
     }
 
-    public int getIndicator() {
+    public String getIndicator() {
         return indicator;
     }
 
@@ -23,7 +24,7 @@ public class Item {
         return name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

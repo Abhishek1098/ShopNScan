@@ -1,9 +1,18 @@
 package com.example.shopnscan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.vision.barcode.Barcode;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +21,14 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView cart;
     private Button checkout, scan;
+    private TextView itemTotal, priceTotal;
     private ArrayList<Item> items;
+    private ArrayList<Item> database;
+    private ItemUI itemUI;
+
+    final private static int BARCODE_REQUEST_CODE = 9232;
+    private int itemCount = 0;
+    private double price = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +38,57 @@ public class MainActivity extends AppCompatActivity {
         cart = (ListView)findViewById(R.id.ui_main_cart);
         checkout = (Button)findViewById(R.id.ui_main_checkout);
         scan = (Button)findViewById(R.id.ui_main_scan);
+        itemTotal = (TextView)findViewById(R.id.MainActivity_TextView_ItemTotal);
+        priceTotal = (TextView)findViewById(R.id.MainActivity_TextView_TotalPrice);
 
-        items = new ArrayList<>(Arrays.asList(new Item(00, "name", 00, null)));
+        itemTotal.setText("Items: 0");
+        priceTotal.setText("Price: $0.00");
 
-        ItemUI itemUI =  new ItemUI(this, R.layout.activity_item, items);
+        items = new ArrayList<>();
+        database = new ArrayList<>();
+            database.add(new Item("04904403", "Coca-Cola 20oz", 1.99, null));
+            database.add(new Item("096619313952", "Kirkland Chewy Chocolate Chip Bar", 1.29, null));
+            database.add(new Item("038000357213", "Nutri-Grain Blueberry Bar", 1.29, null));
+            database.add(new Item("9780439027021", "Sea of Monsters Novel", 7.99, null));
+
+        itemUI =  new ItemUI(this, R.layout.activity_item, items);
         cart.setAdapter(itemUI);
 
+        scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ScanActivity.class);
+                startActivityForResult(intent,BARCODE_REQUEST_CODE);
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==BARCODE_REQUEST_CODE){
+            if(resultCode== CommonStatusCodes.SUCCESS){
+                if(data!=null){
+                    final Barcode barcode = data.getParcelableExtra("barcode");
+                    for(Item item : database){
+                        if(item.getIndicator().equals(barcode.displayValue)){
+                            items.add(item);
+                            itemUI.notifyDataSetChanged();
+                            itemCount++;
+                            itemTotal.setText("Items: "+itemCount);
+                            price += item.getPrice();
+                            priceTotal.setText("Price: $"+price);
+                        }
+                    }
+                    //scanResult.setText("Barcode Value: "+barcode.displayValue);
+
+                }else{
+                    Toast.makeText(this, "No Barcode Found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }else {
+
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }
