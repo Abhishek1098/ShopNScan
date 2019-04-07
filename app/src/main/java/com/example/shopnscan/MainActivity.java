@@ -1,6 +1,7 @@
 package com.example.shopnscan;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
@@ -68,6 +69,16 @@ public class MainActivity extends AppCompatActivity{
 
         itemUI =  new ItemUI(this, R.layout.activity_item, items);
         cart.setAdapter(itemUI);
+
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.venmo");
+                if (launchIntent != null) {
+                    startActivity(launchIntent);//null pointer check in case package name was not found
+                }
+            }
+        });
 
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
