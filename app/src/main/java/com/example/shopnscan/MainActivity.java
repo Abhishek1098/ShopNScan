@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -51,14 +52,17 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+
+
         cart = (ListView)findViewById(R.id.ui_main_cart);
         checkout = (Button)findViewById(R.id.ui_main_checkout);
         scan = (Button)findViewById(R.id.ui_main_scan);
         itemTotal = (TextView)findViewById(R.id.MainActivity_TextView_ItemTotal);
         priceTotal = (TextView)findViewById(R.id.MainActivity_TextView_TotalPrice);
 
-        itemTotal.setText("Items: 0");
-        priceTotal.setText("Price: $0.00");
+        itemTotal.setText("0 items");
+        priceTotal.setText("$0.00");
 
         items = new ArrayList<>();
         database = new ArrayList<>();
@@ -100,9 +104,9 @@ public class MainActivity extends AppCompatActivity{
                             items.add(item);
                             itemUI.notifyDataSetChanged();
                             itemCount++;
-                            itemTotal.setText("Items: "+itemCount);
+                            itemTotal.setText(itemCount+" items");
                             price += item.getPrice();
-                            priceTotal.setText("Price: $"+price);
+                            priceTotal.setText("$"+price);
                         }
                     }
                     //scanResult.setText("Barcode Value: "+barcode.displayValue);

@@ -5,7 +5,10 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/place_autocomplete_search_hint">
+    android:background="@color/place_autocomplete_search_hint"
+    android:gravity="center|center_horizontal"
+    android:orientation="horizontal"
+    android:backgroundTint="@color/wallet_bright_foreground_holo_dark">
 
     <TextView
         android:id="@+id/ui_item_name"
@@ -14,14 +17,10 @@
         android:layout_weight="1"
         android:includeFontPadding="false"
         android:text="Name"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:fontFamily="sans-serif-black" />
-
-    <ImageView
-        android:id="@+id/ui_item_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/ui_item_price"
@@ -29,6 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Price"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:fontFamily="sans-serif-medium" />
 
 </LinearLayout>

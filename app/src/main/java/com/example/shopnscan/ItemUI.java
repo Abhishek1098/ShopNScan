@@ -31,15 +31,13 @@ public class ItemUI extends ArrayAdapter<Item> {
 
         TextView viewName = view.findViewById(R.id.ui_item_name);
         TextView viewPrice = view.findViewById(R.id.ui_item_price);
-        ImageView viewImage = view.findViewById(R.id.ui_item_image);
 
         String name = items.get(position).getName();
-        String price = items.get(position).getPrice() + "";
+        String price = "$" + items.get(position).getPrice();
         Bitmap image = items.get(position).getImage();
 
         viewName.setText(name);
         viewPrice.setText(price);
-        viewImage.setImageBitmap(image);
 
         return view;
     }
