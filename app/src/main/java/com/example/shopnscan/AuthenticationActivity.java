@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,8 @@ public class AuthenticationActivity extends AppCompatActivity implements GoogleA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
 
+
+        ((ImageView)findViewById(R.id.ui_imageLogo)).setImageResource(R.drawable.fuckinglogo);
 
         //Firebase Authenticaton
 
